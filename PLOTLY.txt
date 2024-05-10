@@ -1,0 +1,410 @@
+LINE PLOT
+# Import necessary libraries
+import plotly.express as px
+
+# Data
+x = [1, 2, 3, 4, 5]
+y = [1, 4, 9, 16, 25]
+
+# Create a line plot
+fig = px.line(x=x, y=y, title='A Simple Line Plot', labels={'x':'X Axis', 'y':'Y Axis'})
+
+# Display the plot
+fig.show()
+SCATTER PLOT
+# import the plotly express module
+import plotly.express as px
+
+# using the iris dataset
+df = px.data.iris()
+
+# plotting the scatter plot
+fig = px.scatter(df, x="petal_length", y="petal_width")
+
+# showing the plot
+fig.show()
+LINE PLOT OR LINE CHART
+# import the plotly express module
+import plotly.express as px
+
+# using the iris dataset
+df = px.data.iris()
+
+# plotting the line chart
+fig = px.line(df, x="species", y="petal_width")
+
+# showing the plot
+fig.show()
+BAR PLOT
+# import the plotly express module
+import plotly.express as px
+
+# using the iris dataset
+df = px.data.iris()
+
+# plotting the bar chart
+fig = px.bar(df, x="species", y="petal_width")
+
+# showing the plot
+fig.show()
+BOX PLOT
+# import the plotly express module
+import plotly.express as px
+
+# using the iris dataset
+df = px.data.iris()
+
+# plotting the box plot
+fig = px.box(df, x="species", y="petal_width")
+
+# showing the plot
+fig.show()
+VIOLIN PLOT
+# import the plotly express module
+import plotly.express as px
+
+# using the iris dataset
+df = px.data.iris()
+
+# plotting the violin plot
+fig = px.violin(df, x="species", y="petal_width")
+
+# showing the plot
+fig.show()
+HISTOGRAM
+# import the plotly express module
+import plotly.express as px
+
+# using the iris dataset
+df = px.data.iris()
+
+# plotting the histogram
+fig = px.histogram(df, x="petal_length", color="species")
+
+# showing the plot
+fig.show()
+PIE CHART
+# import the plotly express module
+import plotly.express as px
+
+# using the iris dataset
+df = px.data.iris()
+
+# plotting the pie chart
+fig = px.pie(df, names="species")
+
+# showing the plot
+fig.show()
+3D SCATTER PLOT
+# import the plotly express module
+import plotly.express as px
+
+# using the iris dataset
+df = px.data.iris()
+
+# plotting the pie chart
+fig = px.pie(df, names="species")
+
+# showing the plot
+fig.show()
+AREA CHART
+# import the required module
+import plotly.express as px
+
+# load the iris dataset from the plotly express module
+df = px.data.iris()
+
+# sort the data by sepal length
+df_area = df.sort_values(by=['sepal_length'])
+
+# create an area chart using the sepal width and sepal length columns of the dataset
+# color the chart based on the species column of the dataset
+fig = px.area(df_area, x='sepal_width', y='sepal_length', color='species')
+
+# show the plot
+fig.show()
+BUBBLE CHART
+# import the required module
+import plotly.express as px
+
+# load the iris dataset from the plotly express module
+df = px.data.iris()
+
+# sort the data by sepal length
+df_area = df.sort_values(by=['sepal_length'])
+
+# color the chart based on the species column of the dataset
+# size the bubbles based on the petal width column of the dataset
+fig = px.scatter(df_area, x='sepal_width',
+                 y='sepal_length',
+                 size='petal_width', color='species')
+
+# show the plot
+fig.show()
+SUNBURST CHART
+# import the required module
+import plotly.express as px
+
+# load the iris dataset from the plotly express module
+df = px.data.iris()
+
+# group the data by species, petal width, and sepal width
+df_sunburst = df.groupby(['species', 'petal_width', 'sepal_width']).size().reset_index(name='counts')
+
+# create a sunburst chart using the species, petal width, and sepal width columns of the dataset
+fig = px.sunburst(df_sunburst, path=['species', 'petal_width', 'sepal_width'], values='counts')
+
+# show the plot
+fig.show()
+PARALLER CHART
+# import the required module
+import plotly.express as px
+
+# load the iris dataset from the plotly express module
+df = px.data.iris()
+
+# group the data by species, petal width, and sepal width
+df_sunburst = df.groupby(['species', 'petal_width', 'sepal_width']).size().reset_index(name='counts')
+
+# create a sunburst chart using the species, petal width, and sepal width columns of the dataset
+fig = px.sunburst(df_sunburst, path=['species', 'petal_width', 'sepal_width'], values='counts')
+
+# show the plot
+fig.show()
+DENSITY CONTOUR PLOT
+# Importing libraries
+import plotly.express as px
+
+# using the iris dataset
+df = px.data.iris()
+
+# plotting the density contour plot
+fig = px.density_contour(df, x='sepal_length',
+                         y='sepal_width',
+                         color='species')
+# Show the plot
+fig.show()
+TERNARY PLOT
+# Importing libraries
+import plotly.express as px
+
+# using the iris dataset
+df = px.data.iris()
+
+# plotting the Scatter ternary plot
+fig = px.scatter_ternary(df, a='sepal_length',
+                         b='sepal_width',
+                         c='petal_width',
+                         color='species')
+# Show the plot
+fig.show()
+POLAR CHART
+# Importing libraries
+import plotly.express as px
+
+# using the iris dataset
+df = px.data.iris()
+
+# plotting the Scatter ternary plot
+fig = px.scatter_ternary(df, a='sepal_length',
+                         b='sepal_width',
+                         c='petal_width',
+                         color='species')
+# Show the plot
+fig.show()
+GEOGRAPHICAL PLOT
+# import the necessary libraries
+import plotly.express as px
+
+# load the sample election data
+df = px.data.election()
+
+# load the geojson file for the election districts
+geojson = px.data.election_geojson()
+
+# create a choropleth map using plotly
+fig = px.choropleth_mapbox(df, geojson=geojson, color="Coderre",
+                           locations="district", featureidkey="properties.district",
+                           center={"lat": 45.5517, "lon": -73.7073},
+                           mapbox_style="carto-positron", zoom=9)
+
+# update the layout of the map
+fig.update_layout(margin={"r":0,"t":0,"l":0,"b":0})
+
+# display the map
+fig.show()
+ANIMATED BUBBLE CHART
+# import the necessary libraries
+import plotly.express as px
+import pandas as pd
+import numpy as np
+import io
+import PIL
+
+# load the gapminder data from plotly
+df = px.data.gapminder()
+
+# create a choropleth map using plotly
+fig = px.scatter(df, x= "gdpPercap",
+            y = "lifeExp",
+            size= "pop", color= "continent",
+            animation_frame='year', animation_group="country",
+            log_x=True, size_max=55, range_x=[100,100000], range_y=[5,100])
+
+
+# save the animated plot as a gif file
+
+# generate images for each step in animation
+frames = []
+for s, fr in enumerate(fig.frames):
+    # set main traces to appropriate traces within plotly frame
+    fig.update(data=fr.data)
+    # move slider to correct place
+    fig.layout.sliders[0].update(active=s)
+    # generate image of current state
+    frames.append(PIL.Image.open(io.BytesIO(fig.to_image(format="png", scale=1))))
+
+# create animated GIF
+frames[0].save(
+        "Animated Bubble Plot using plotly.gif",
+        save_all=True,
+        append_images=frames[1:],
+        optimize=True,
+        duration=500, # milliseconds per frame
+        loop=0, # infinite loop
+        dither=None  # Turn off dithering
+    )
+ADD DROP DOWN BUTTON IN PLOTLY
+import plotly.graph_objects as px
+import numpy as np
+
+
+# creating random data through randomint
+# function of numpy.random
+np.random.seed(42)
+
+# Data to be Plotted
+random_x = np.random.randint(1, 101, 100)
+random_y = np.random.randint(1, 101, 100)
+
+plot = px.Figure(data=[px.Scatter(
+    x=random_x,
+    y=random_y,
+    mode='markers',)
+])
+
+# Add dropdown
+plot.update_layout(
+    updatemenus=[
+        dict(
+            buttons=list([
+                dict(
+                    args=["type", "scatter"],
+                    label="Scatter Plot",
+                    method="restyle"
+                ),
+                dict(
+                    args=["type", "bar"],
+                    label="Bar Chart",
+                    method="restyle"
+                )
+            ]),
+            direction="down",
+        ),
+    ]
+)
+
+plot.show()
+ADD BUTTON
+import plotly.graph_objects as px
+import pandas as pd
+import seaborn as sns
+
+# reading the database
+data = sns.load_dataset('tips')
+
+
+plot = px.Figure(data=[px.Scatter(
+    x=data['day'],
+    y=data['tip'],
+    mode='markers',)
+])
+
+# Add dropdown
+plot.update_layout(
+    updatemenus=[
+        dict(
+            type="buttons",
+            direction="left",
+            buttons=list([
+                dict(
+                    args=["type", "scatter"],
+                    label="Scatter Plot",
+                    method="restyle"
+                ),
+                dict(
+                    args=["type", "bar"],
+                    label="Bar Chart",
+                    method="restyle"
+                )
+            ]),
+        ),
+    ]
+)
+
+plot.show()
+ANIMATED GEO MAP PLOT
+# import the necessary libraries
+import pandas as pd
+import plotly.express as px
+
+# load the population data from a csv file hosted on GitHub
+df = pd.read_csv('https://raw.githubusercontent.com/datasets/population/main/data/population.csv')
+
+# create a choropleth map using plotly
+fig = px.choropleth(df, locations='Country Name', locationmode='country names', color = 'Value',
+                    animation_frame='Year', range_color=[100000, 50000000],
+                    color_continuous_scale='portland',
+                    title='Global Population by Country')
+
+# display the map
+fig.show()
+SAVE AS GIF
+# import the necessary libraries
+import plotly.express as px
+import pandas as pd
+import numpy as np
+import io
+import PIL
+
+# load the population data from a csv file hosted on GitHub
+df = pd.read_csv('https://raw.githubusercontent.com/datasets/population/main/data/population.csv')
+
+# create a choropleth map using plotly
+fig = px.choropleth(df, locations='Country Name', locationmode='country names', color = 'Value',
+                    animation_frame='Year', range_color=[100000, 50000000],
+                    color_continuous_scale='portland',
+                    title='Global Population by Country')
+
+# save the animated map as a gif file
+
+# generate images for each step in animation
+frames = []
+for s, fr in enumerate(fig.frames):
+    # set main traces to appropriate traces within plotly frame
+    fig.update(data=fr.data)
+    # move slider to correct place
+    fig.layout.sliders[0].update(active=s)
+    # generate image of current state
+    frames.append(PIL.Image.open(io.BytesIO(fig.to_image(format="png", scale=2))))
+
+# create animated GIF
+frames[0].save(
+        "world_population_in_recent_years.gif",
+        save_all=True,
+        append_images=frames[1:],
+        optimize=True,
+        duration=500, # milliseconds per frame
+        loop=0, # infinite loop
+        dither=None  # Turn off dithering
+    )
